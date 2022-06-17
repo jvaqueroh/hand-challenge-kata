@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Text;
+using FluentAssertions;
 
 namespace HandChallengeKata
 {
@@ -26,6 +27,14 @@ namespace HandChallengeKata
             var result = handCompiler.Compile("👇");
 
             result.Should().Be(string.Empty);
+        }
+
+        [Test]
+        public void return_ascii_char_for_decimal_1()
+        {
+            var result = handCompiler.Compile("👆👊");
+
+            result.Should().Be(Encoding.ASCII.GetString((new[] { (byte)1 })));
         }
     }
 }
